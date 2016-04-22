@@ -16,5 +16,5 @@ public void Foo() {}
 ```
 It works as a signal. 
 
-## About me
+## Author
 [https://www.linkedin.com/in/ierostenko](https://www.linkedin.com/in/ierostenko)
