@@ -7,8 +7,10 @@ And call `Execute()` method to invoke listeners:
 ```c#
 onMyAction.Execute();
 ```
-In Editor you can add any number of delegates:<br>
-![image](images/editor_delegate.png) <br>
+In Editor you can add any number of delegates:
+
+![image](images/editor_delegate.png)
+
 But callback function must return void and has no params, like:
 ```c#
 public void Foo() {}
