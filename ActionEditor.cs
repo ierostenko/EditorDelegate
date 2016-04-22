@@ -77,7 +77,7 @@ public class ActionEditor : PropertyDrawer
             List<string> methodsList = GetMethodList(targets[i]);
             int selectedIndex = methodsList.FindIndex(x => x.StartsWith(methods[i]));
 
-            int index = EditorGUI.Popup(methodRect, "Method Name:", selectedIndex, methodsList.ToArray() /*new string[] { "a/Rigidbody", "a/Box Collider", "b/Sphere Collider" }*/);
+            int index = EditorGUI.Popup(methodRect, "Method Name:", selectedIndex, methodsList.ToArray());
 
             if (index != selectedIndex)
             {
