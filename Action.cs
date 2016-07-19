@@ -2,29 +2,34 @@
 using UnityEngine;
 using System.Reflection;
 
-[System.Serializable]
-public class Action
+namespace EventDelegate
 {
-    public const string METHOD_NONE = "None";
-
-    public List<MonoBehaviour> targets;
-    public List<string> methods;
-    
-    public void Execute()
+    [System.Serializable]
+    public class Action
     {
-        for (int i = 0; i < targets.Count; i++ )
+        public const string METHOD_NONE = "None";
+
+        public bool isOpen = true;
+
+        public List<MonoBehaviour> targets;
+        public List<string> methods;
+
+        public void Execute()
         {
-            if (targets[i] == null)
-                continue;
-
-            if(methods.Count > i && methods[i] != METHOD_NONE)
+            for (int i = 0; i < targets.Count; i++)
             {
-                string[] strArr = methods[i].Split('/');
+                if (targets[i] == null)
+                    continue;
 
-                MonoBehaviour monoBeh = targets[i];
-                Component component = monoBeh.gameObject.GetComponent(strArr[0]);
-                
-                component.GetType().InvokeMember(strArr[strArr.Length - 1], BindingFlags.Public | BindingFlags.InvokeMethod, null, component, null);
+                if (methods.Count > i && methods[i] != METHOD_NONE)
+                {
+                    string[] strArr = methods[i].Split('/');
+
+                    MonoBehaviour monoBeh = targets[i];
+                    Component component = monoBeh.gameObject.GetComponent(strArr[0]);
+
+                    component.GetType().InvokeMember(strArr[strArr.Length - 1], BindingFlags.Public | BindingFlags.InvokeMethod, null, component, null);
+                }
             }
         }
     }
